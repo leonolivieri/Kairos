@@ -1,0 +1,352 @@
+/* Definição de Cores Globais */
+:root {
+    --cor-primaria: #0d6efd; 
+    --cor-secundaria: #212529;
+}
+
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+/* Configuração da Imagem de Capa */
+.hero-section {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+}
+
+/* Efeito nos Cards de Serviço */
+.card-servico {
+    transition: transform 0.3s;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card-servico:hover { 
+    transform: translateY(-5px); 
+}
+
+/* Efeito de levitação nos cards de dor */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.15) !important;
+}
+
+/* --- EFEITO TOQUE DE MIDAS (LISTA) --- */
+
+.k-list-item {
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent; /* Borda invisível inicialmente */
+}
+
+/* Quando passa o mouse no Card */
+.k-list-item:hover {
+    transform: translateX(10px); /* Desliza para direita */
+    border-left: 4px solid #B79538; /* A borda fica Dourada */
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,0.1) !important; /* Sombra aumenta */
+}
+
+/* Comportamento do Ícone */
+.k-list-item .icon-box {
+    transition: all 0.3s ease;
+    background-color: rgba(0, 28, 62, 0.05); /* Fundo original suave */
+    color: #001C3E; /* Ícone Azul */
+}
+
+/* Quando passa o mouse, muda o Ícone */
+.k-list-item:hover .icon-box {
+    background-color: #B79538; /* Fundo Dourado */
+    color: #ffffff; /* Ícone Branco */
+}
+
+/* Efeito para o Link de Parceiro no Rodapé */
+.partner-link-hover {
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.partner-link-hover:hover {
+    background: rgba(183, 149, 56, 0.2); /* Fundo Dourado Translúcido */
+    border-color: #B79538; /* Borda Dourada */
+    transform: translateY(-2px); /* Leve subida */
+    cursor: pointer;
+}
+
+.partner-cta-text {
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.partner-link-hover:hover .partner-cta-text {
+    opacity: 1; /* Texto acende ao passar o mouse */
+    color: #fff;
+}
+
+/* Botão CTA do Menu (Estilo Kairós) */
+.btn-nav-cta {
+    color: #B79538; /* Texto Dourado */
+    border: 1px solid #B79538; /* Borda Dourada */
+    background: transparent;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 8px 20px;
+    border-radius: 50px; /* Arredondado moderno */
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Espaço entre ícone e texto */
+}
+
+/* Efeito ao passar o mouse */
+.btn-nav-cta:hover {
+    background: #B79538; /* Fica Dourado Sólido */
+    color: #ffffff; /* Texto Branco */
+    border-color: #B79538;
+    transform: translateY(-2px); /* Leve levitação */
+    box-shadow: 0 4px 15px rgba(183, 149, 56, 0.3); /* Brilho Dourado */
+}
+
+/* Cards Diferenciais (Dark Glass) */
+.diff-card {
+    background: rgba(255, 255, 255, 0.03); /* Vidro super sutil */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borda quase invisível */
+    transition: all 0.3s ease;
+}
+
+.diff-card:hover {
+    background: rgba(0, 0, 0, 0.2); /* Escurece um pouco */
+    border-color: #B79538; /* Borda Dourada */
+    transform: translateX(-5px); /* Move levemente para a esquerda */
+    box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.diff-card:hover .icon-wrapper {
+    background-color: #B79538 !important; /* Ícone fica Dourado Sólido */
+    color: #001C3E !important; /* Símbolo fica Azul */
+}
+
+/* --- VARIÁVEIS GLOBAIS KAIRÓS --- */
+:root {
+    --kairos-blue: #001C3E;
+    --kairos-blue-dark: #002a5c;
+    --kairos-gold: #B79538;
+    --kairos-gold-hover: #d4ac40;
+}
+
+/* --- UTILITÁRIOS DE COR --- */
+.bg-kairos-blue { background-color: var(--kairos-blue) !important; }
+.text-kairos-gold { color: var(--kairos-gold) !important; }
+.border-kairos-gold { border-color: var(--kairos-gold) !important; }
+
+/* --- SISTEMA DE BADGES KAIRÓS v2.0 (Material Design) --- */
+
+.kairos-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px; /* Reduzi levemente para ficar mais elegante */
+    border-radius: 4px; /* MUDANÇA: Borda levemente quadrada para o Bronze, ou manter 50px */
+    font-size: 0.75rem; /* Fonte menor e mais técnica */
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+/* TIPO 1: A "Jóia" (Bitrix Bronze) */
+/* TIPO 1: A "Jóia" (Bitrix Bronze REAL) */
+.badge-authority {
+    /* Gradiente Bronze: Mais Cobre/Terra e menos Amarelo */
+    background: linear-gradient(135deg, #8B5A2B 0%, #D69E6B 50%, #8B5A2B 100%);
+    
+    /* Borda mais escura para dar acabamento */
+    border: 1px solid #5C3A1A; 
+    
+    /* Mantendo o azul escuro no texto para contraste premium */
+    color: #0d1635; 
+    
+    border-radius: 4px;
+    
+    /* Sombra com o brilho do bronze (avermelhado) */
+    box-shadow: 0 4px 15px rgba(139, 90, 43, 0.3); 
+}
+.badge-authority i {
+    color: #0d1635; /* Ícone na mesma cor do texto */
+}
+
+/* TIPO 2: O "Sistema" (Localização) */
+.badge-ghost {
+    background: transparent; /* Removemos o fundo para limpar a briga */
+    border: none; /* Sem borda para não parecer botão */
+    padding-left: 0; /* Alinha com o texto abaixo */
+    color: rgba(255, 255, 255, 0.6); /* Cinza azulado tecnológico */
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.badge-ghost i {
+    color: #bf8f49; /* Ícone dourado para conectar visualmente */
+    margin-right: 5px;
+}
+
+.badge-ghost strong {
+    color: #fff; /* A cidade brilha em branco */
+    font-weight: 600;
+    border-bottom: 1px dotted rgba(255,255,255,0.3); /* Um sublinhado sutil tech */
+}
+
+/* --- HERO SECTION (PREMIUM) --- */
+.hero-bg {
+    background: radial-gradient(circle at top right, #0a2e5c 0%, var(--kairos-blue) 100%);
+    padding: 120px 0 100px;
+}
+
+.hero-glow-effect {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: var(--kairos-gold);
+    filter: blur(120px);
+    opacity: 0.2;
+    border-radius: 50%;
+}
+
+.glass-badge {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+}
+
+.glass-card-dashboard {
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+}
+
+/* --- BOTÕES KAIRÓS --- */
+.btn-kairos-gold {
+    background-color: var(--kairos-gold);
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease;
+}
+.btn-kairos-gold:hover {
+    background-color: var(--kairos-gold-hover);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-kairos-outline {
+    border-color: var(--kairos-gold);
+    color: var(--kairos-gold);
+    background: transparent;
+    transition: all 0.3s ease;
+}
+.btn-kairos-outline:hover {
+    background-color: var(--kairos-gold);
+    color: #fff;
+}
+
+/* --- SEÇÃO DIFERENCIAIS (BLACK GLASS) --- */
+.diferenciais-bg {
+    background-color: var(--kairos-blue);
+    color: white;
+}
+
+.diferenciais-spotlight {
+    position: absolute;
+    top: 0;
+    start: 0;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(183,149,56,0.15) 0%, rgba(0,28,62,0) 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+/* --- SEÇÃO ULTIMATO (CTA FINAL) --- */
+.ultimato-section {
+    background: linear-gradient(180deg, var(--kairos-blue) 0%, var(--kairos-blue-dark) 100%);
+    border-top: 1px solid rgba(183, 149, 56, 0.3);
+    border-bottom: 1px solid rgba(183, 149, 56, 0.3);
+}
+
+.ultimato-light {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 100%;
+    background: radial-gradient(ellipse at top, rgba(183, 149, 56, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* --- RODAPÉ --- */
+.footer-kairos {
+    background-color: var(--kairos-blue);
+    border-top: 4px solid var(--kairos-gold);
+}
+
+/* --- Correção Dinâmica de Título (Kairós Engine) --- */
+.titulo-dinamico {
+    /* Sintaxe: clamp(MINIMO, IDEAL, MAXIMO) */
+    /* Em telas pequenas, ele reduz para 1.8rem. Em telas grandes, vai até 3.5rem. */
+    font-size: clamp(1.8rem, 4.5vw, 3.5rem) !important;
+    
+    /* Garante que se quebrar linha, não fique muito espaçado */
+    line-height: 1.1 !important;
+    
+    /* Evita quebras de palavras feias no meio (hifenização) */
+    hyphens: auto;
+}
+
+/* --- RESPONSIVIDADE E ADAPTAÇÃO (MOBILE) --- */
+
+@media (max-width: 768px) {
+    /* 1. Ajuste dos Badges no Mobile */
+    .kairos-badge {
+        width: 100%; /* Ocupa a largura toda para não quebrar feio */
+        justify-content: center; /* Centraliza o conteúdo */
+        margin-bottom: 8px; /* Reduz espaçamento vertical */
+        padding: 8px 10px; /* Reduz padding lateral */
+    }
+
+    /* 2. Redução da fonte apenas no mobile para caber cidades longas */
+    .badge-ghost {
+        /* CLAMP: Mínimo 11px, Ideal 3.5% da tela, Máximo 13px */
+        font-size: clamp(0.7rem, 3.5vw, 0.85rem); 
+        white-space: normal; /* Permite quebra de linha controlada se necessário */
+        text-align: center;
+    }
+
+    /* 3. Ajuste do Título Principal para não colar nos badges */
+    .hero-section h1 {
+        margin-top: 15px !important;
+        font-size: 2.2rem !important; /* Reduz levemente o título gigante */
+    }
+    
+    /* 4. Ajuste da quebra de linha forçada <br> que colocamos no PHP */
+    .kairos-badge + br {
+        display: block; /* Garante a quebra */
+        content: ""; 
+        margin-bottom: 5px;
+    }
+}
+
+/* Tweak para Desktop: Evitar quebra em nomes muito longos */
+@media (min-width: 769px) {
+    .badge-ghost strong {
+        white-space: nowrap; /* Tenta manter a cidade na mesma linha */
+    }
+}
