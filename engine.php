@@ -21,7 +21,8 @@ $cidades_estrategicas = [
     'pocos'          => 'Poços de Caldas',
     'guaxupe'        => 'Guaxupé',
     'juruaia'        => 'Juruaia (Polo Têxtil)',
-    'pirassununga'   => 'Pirassununga'
+    'pirassununga'   => 'Pirassununga',
+    'guaranesia'     => 'Guaranésia',
 ];
 
 // 2. Captura Segura do Parâmetro (Sanitização Básica)
