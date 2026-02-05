@@ -50,7 +50,7 @@
                                         </div>
                                         
                                         <p class="small text-white-50 mt-3 fst-italic">
-                                            * Atendimento presencial e remoto conforme disponibilidade técnica da unidade Talk Consulting regional.
+                                            * Atendimento presencial e remoto conforme disponibilidade técnica da unidade Kairós Ventures regional.
                                         </p>
                                     </div>
                                 </div>

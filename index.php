@@ -42,7 +42,7 @@
                             </div>
                             
                             <p class="small text-white-50 mt-4">
-                                <i class="bi bi-shield-lock"></i> Implementação segura certificada pela Talk Consulting.
+                                <i class="bi bi-shield-lock"></i> Implementação segura certificada pela Kairós Ventures.
                             </p>
                         </div>
 
@@ -73,7 +73,7 @@
                                     <div class="bg-warning rounded p-2 me-3"><i class="bi bi-kanban-fill text-dark"></i></div>
                                     <div>
                                         <h6 class="text-white mb-0">Gestão de Projetos</h6>
-                                        <small class="text-white-50">Sincronizado via Talk Infra</small>
+                                        <small class="text-white-50">Sincronizado via Kairós Infra</small>
                                     </div>
                                 </div>
 
