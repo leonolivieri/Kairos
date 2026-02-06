@@ -127,34 +127,43 @@
         </header>
 
         <?php if (!empty($lista_insights)): ?>
-            <section class="py-5 position-relative" id="insights" style="background-color: #f8f9fa; border-bottom: 1px solid rgba(0,0,0,0.05);">
-                <div class="container position-relative z-1">
+            
+            <section class="py-5 position-relative tech-pattern-bg" id="insights">
+                
+                <div class="tech-overlay"></div>
+
+                <div class="container position-relative z-1 py-3">
                     
-                    <div class="d-flex justify-content-between align-items-end mb-5">
-                        <div>
-                            <h6 class="text-uppercase fw-bold mb-2" style="color: #B79538; letter-spacing: 2px;">
-                                <i class="bi bi-newspaper me-1"></i> Inteligência de Mercado
-                            </h6>
-                            <h2 class="fw-bold mb-0 text-dark">Doutrina & Atualizações</h2>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-lg-8">
+                            <div class="d-flex align-items-center mb-2">
+                                <span style="height: 2px; width: 40px; background: #B79538; display: inline-block; margin-right: 15px;"></span>
+                                <h6 class="fw-bold text-uppercase mb-0" style="color: #001C3E; letter-spacing: 2px; font-size: 0.8rem;">
+                                    Atualização Contínua
+                                </h6>
+                            </div>
+                            <h2 class="fw-bold text-dark display-6">
+                                Kairós <span style="font-weight: 300;">Intelligence</span>
+                            </h2>
                         </div>
-                        <div class="d-none d-md-block">
-                            <span class="text-muted small">Acompanhe nossa visão técnica</span>
+                        <div class="col-lg-4 text-lg-end d-none"> 
+                            <a href="#" class="btn btn-outline-dark rounded-0 px-4 py-2" style="font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;">
+                            Ver Acervo Completo
+                            </a>
                         </div>
                     </div>
 
                     <div class="row g-4">
                         <?php foreach ($lista_insights as $post): ?>
                         <div class="col-lg-4 col-md-6">
-                            <div class="card h-100 border-0 shadow-sm hover-card-effect" style="transition: transform 0.3s ease;">
+                            
+                            <div class="card h-100 border-0 shadow hover-lift-effect">
                                 <div class="card-body p-4 d-flex flex-column">
                                     
-                                    <div class="mb-3 d-flex justify-content-between align-items-start">
-                                        <span class="badge bg-light text-dark border fw-normal">
-                                            <?php echo $post['categoria']; ?>
+                                    <div class="mb-3">
+                                        <span class="text-tech-label">
+                                            // <?php echo $post['categoria']; ?>
                                         </span>
-                                        <small class="text-muted" style="font-size: 0.8rem;">
-                                            <?php echo date('d/m/Y', strtotime($post['data_publicacao'])); ?>
-                                        </small>
                                     </div>
 
                                     <h5 class="card-title fw-bold mb-3">
@@ -163,13 +172,13 @@
                                         </a>
                                     </h5>
 
-                                    <p class="card-text text-secondary small mb-4 flex-grow-1" style="line-height: 1.6;">
+                                    <p class="card-text text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">
                                         <?php echo $post['titulo_tecnico']; ?>
                                     </p>
 
-                                    <div class="d-flex align-items-center text-primary mt-auto pt-3 border-top border-light">
-                                        <span class="small fw-bold">Ler Análise Completa</span>
-                                        <i class="bi bi-arrow-right ms-2"></i>
+                                    <div class="mt-auto pt-3 border-top border-light d-flex justify-content-between align-items-center text-muted small">
+                                        <span><?php echo date('d.m.Y', strtotime($post['data_publicacao'])); ?></span>
+                                        <i class="bi bi-arrow-right"></i>
                                     </div>
 
                                 </div>
@@ -180,7 +189,7 @@
 
                 </div>
             </section>
-        <?php endif; ?>        
+        <?php endif; ?>
 
         <section class="py-5" id="desafios" style="background-color: #f8f9fa;">
             <div class="container py-4">

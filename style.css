@@ -266,7 +266,7 @@ body {
 .diferenciais-spotlight {
     position: absolute;
     top: 0;
-    start: 0;
+    left: 0;
     width: 600px;
     height: 600px;
     background: radial-gradient(circle, rgba(183,149,56,0.15) 0%, rgba(0,28,62,0) 70%);
@@ -349,4 +349,56 @@ body {
     .badge-ghost strong {
         white-space: nowrap; /* Tenta manter a cidade na mesma linha */
     }
+}
+
+/* ==========================================================================
+   SEÇÃO: KAIRÓS INSIGHTS (Tech Pattern & Cards)
+   Descrição: Textura de engenharia e efeitos de elevação para vitrine
+   ========================================================================== */
+
+/* 1. O Fundo Técnico (Dot Matrix) */
+.tech-pattern-bg {
+    background-color: #f4f6f8; /* Base Cinza Gelo */
+    /* Desenha os pontos matematicamente usando gradiente */
+    background-image: radial-gradient(#001C3E 0.8px, transparent 0.8px), 
+                      radial-gradient(#001C3E 0.8px, #f4f6f8 0.8px);
+    background-size: 24px 24px; /* Distância entre pontos */
+    background-position: 0 0, 12px 12px; /* Intercalação */
+    position: relative;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* 2. A Máscara de Suavização (Overlay) */
+.tech-overlay {
+    /* Cria um degradê que faz os pontos "sumirem" no topo e no chão */
+    background: linear-gradient(180deg, 
+                rgba(244,246,248,1) 0%, 
+                rgba(244,246,248,0.4) 50%, 
+                rgba(244,246,248,1) 100%);
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none; /* Permite clicar através dele */
+    z-index: 0;
+}
+
+/* 3. Efeito de Elevação (Hover Lift) */
+.hover-lift-effect {
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+    background-color: #ffffff;
+}
+
+.hover-lift-effect:hover {
+    transform: translateY(-8px); /* Sobe 8 pixels */
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.12) !important; /* Sombra difusa */
+    border-bottom: 3px solid #B79538 !important; /* Detalhe dourado ao passar o mouse */
+}
+
+/* 4. Tipografia Técnica */
+.text-tech-label {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: #B79538;
+    font-weight: 700;
+    text-transform: uppercase;
 }
