@@ -2,6 +2,34 @@
 <?php include 'engine.php'; ?>
 <?php include 'includes/header.php'; ?>
 
+<?php if ($tipo_conteudo == 'artigo'): ?>
+
+    <article class="py-5 bg-light">
+        <div class="container" style="max-width: 800px;">
+            <header class="mb-5 text-center">
+                <span class="badge bg-primary mb-2"><?php echo $conteudo_view['categoria']; ?></span>
+                <h1 class="fw-bold display-5 mb-3"><?php echo $conteudo_view['titulo_popular']; ?></h1>
+                <h2 class="h5 text-muted fw-normal mb-4"><?php echo $conteudo_view['titulo_tecnico']; ?></h2>
+                <div class="d-flex justify-content-center align-items-center text-muted small">
+                    <i class="bi bi-calendar-event me-2"></i>
+                    <span>Publicado em: <?php echo date('d/m/Y', strtotime($conteudo_view['data_publicacao'])); ?></span>
+                </div>
+            </header>
+
+            <div class="artigo-conteudo bg-white p-5 rounded shadow-sm">
+                <?php echo $conteudo_view['conteudo']; ?>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="/" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left me-2"></i>Voltar para Home
+                </a>
+            </div>
+        </div>
+    </article>
+
+<?php else: ?>
+
         <header class="hero-section position-relative overflow-hidden hero-bg" id="home">
                 
                 <div class="position-absolute top-0 end-0 opacity-25 translate-middle-y">
@@ -519,4 +547,5 @@
             </div>
         </section>    
 
+<?php endif; ?>
 <?php include 'includes/footer.php'; ?>        
