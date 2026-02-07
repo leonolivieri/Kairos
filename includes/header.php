@@ -15,6 +15,7 @@
             Intranet Corporativa, Assinatura Eletrônica, Kairós Ventures, Talk Consulting
         ">
         <meta name="google-site-verification" content="6M_4yo_bAvdkOhqNZBV8IOTBl_BvTTd4Y66TvPkHiEA" />
+        <meta name="msvalidate.01" content="9D3EF146BFE240E6AEA9ABA2BF7D8A59" />
         <meta name="author" content="Kairós Ventures & Talk Consulting">
         <meta name="robots" content="index, follow">
 

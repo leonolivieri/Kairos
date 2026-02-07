@@ -49,6 +49,14 @@ function ativarRastreadores() {
     gtag('config', gaId);
     console.log("Kairós OS: Sensor GOOGLE ANALYTICS Ativado."); 
 
+    // 2. MICROSOFT CLARITY (ID: vdr742q747)
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vdr742q747");
+    console.log("Kairós OS: Sensor MICROSOFT CLARITY Ativado.");    
+
     // Aqui o Fabio pode adicionar o Pixel do Facebook, LinkedIn Tag, etc.
     // 2. BLOCO FACEBOOK PIXEL (Ponto de Atualização)
     /* --- Injeção do Facebook Pixel (Kairós OS) --- */
