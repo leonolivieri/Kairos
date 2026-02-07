@@ -1,6 +1,9 @@
 <?php
+// sitemap.php versão 2.70 - Atualizado em 2024-06-15
 // Define que este arquivo é um XML, não uma página HTML
 header("Content-type: text/xml");
+//Usa o seu protocolo de conexão local/produção para definir a URL base do site, garantindo que o sitemap funcione corretamente em ambos os ambientes.
+require_once 'conexao.php';
 
 // Base URL do seu site (ajuste se mudar de domínio)
 $base_url = "https://kairosventures.com.br";
@@ -28,6 +31,13 @@ $cidades_estrategicas = [
     'pirassununga'   => 'Pirassununga'
 ];
 
+// 2. Busca de Artigos Ativos (Hub de Conhecimento)
+$artigos = [];
+try {
+    $stmt = $pdo->query("SELECT slug, data_publicacao FROM kairos_conhecimento WHERE status = 'Ativo'");
+    $artigos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) { /* Falha silenciosa para não quebrar o XML */ }
+
 // Início do XML
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
@@ -48,6 +58,16 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    <?php endforeach; ?>
+
+    <?php foreach($artigos as $art): ?>
+    <url>
+        <loc><?php echo $base_url; ?>/?artigo=<?php echo $art['slug']; ?></loc>
+        <lastmod><?php echo date("Y-m-d", strtotime($art['data_publicacao'])); ?></lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>    
+
     <?php endforeach; ?>
 
 </urlset>

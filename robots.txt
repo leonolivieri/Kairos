@@ -1,5 +1,23 @@
+# KAIRÓS VENTURES - ARTEFATO DE ENGENHARIA v2.5
+# Foco: Proteção de Ativos Intelectuais e Otimização de Indexação
+
 User-agent: *
 Allow: /
+Allow: /sitemap.php
 
-# Sitemap Index
+# --- BLOQUEIO DE ÁREAS DE ENGENHARIA E TESTE ---
+Disallow: /devkairos/
+Disallow: /devkairosia/
+Disallow: /kairosIA/
+Disallow: /biblia/
+
+# --- PROTEÇÃO DE RECURSOS E LOGS ---
+Disallow: /includes/
+Disallow: /database/
+Disallow: /Fotos/
+Disallow: /Fundo/
+Disallow: /web.config
+Disallow: /conexao.php
+
+# --- DIRETRIZ DE MAPA DO SITE ---
 Sitemap: https://kairosventures.com.br/sitemap.php
