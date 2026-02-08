@@ -75,28 +75,29 @@
                                 <a href="https://www.facebook.com/kairosventures" 
                                     target="_blank" 
                                     class="btn btn-outline-light btn-sm rounded-pill px-3 fw-bold d-flex align-items-center"
-                                    style="border-color: rgba(255,255,255,0.3); transition: all 0.3s;">
+                                    style="border-color: rgba(255,255,255,0.3); transition: all 0.3s;"                                  arial-label="Siga a Kairós Ventures no Facebook">
                                     <i class="bi bi-facebook me-2"></i> Facebook
                                 </a>
 
                                 <a href="https://www.instagram.com/kairos.ventures/" 
                                     target="_blank" 
                                     class="btn btn-outline-light btn-sm rounded-pill px-3 fw-bold d-flex align-items-center"
-                                    style="border-color: rgba(255,255,255,0.3); transition: all 0.3s;">
+                                    style="border-color: rgba(255,255,255,0.3); transition: all 0.3s;"
+                                    arial-label="Siga a Kairós Ventures no Instagram">
                                     <i class="bi bi-instagram me-2"></i> Instagram
                                 </a>
 
                                 <a href="https://www.linkedin.com/company/kair%C3%B3s-ventures" 
                                     target="_blank" 
                                     class="btn btn-outline-light btn-sm rounded-pill px-3 fw-bold d-flex align-items-center"
-                                    style="border-color: rgba(255,255,255,0.3); transition: all 0.3s;">
+                                    style="border-color: rgba(255,255,255,0.3); transition: all 0.3s;" arial-label="Siga a Kairós Ventures no Linkedin">
                                     <i class="bi bi-linkedin me-2"></i> Linkedin
                                 </a>
 
                                 <a href="https://www.youtube.com/@Kair%C3%B3sVentures" 
                                     target="_blank" 
                                     class="btn btn-outline-light btn-sm rounded-pill px-3 fw-bold d-flex align-items-center"
-                                    style="border-color: rgba(255,255,255,0.3); transition: all 0.3s;">
+                                    style="border-color: rgba(255,255,255,0.3); transition: all 0.3s;" arial-label="Inscreva-se no canal Kairós Ventures no Youtube">
                                     <i class="bi bi-youtube me-2"></i> Youtube
                                 </a>
 

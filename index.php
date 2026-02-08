@@ -126,71 +126,83 @@
                 </div>
         </header>
 
-        <?php if (!empty($lista_insights)): ?>
+<?php 
+        if (!empty($lista_insights)): 
+            $destaque = $lista_insights[0]; // Focamos apenas no último
+        ?>
             
-            <section class="py-5 position-relative tech-pattern-bg" id="insights">
+        <section class="py-5 bg-white border-bottom border-light" id="insights">
+            <div class="container py-4">
                 
-                <div class="tech-overlay"></div>
-
-                <div class="container position-relative z-1 py-3">
-                    
-                    <div class="row align-items-center mb-5">
-                        <div class="col-lg-8">
-                            <div class="d-flex align-items-center mb-2">
-                                <span style="height: 2px; width: 40px; background: #B79538; display: inline-block; margin-right: 15px;"></span>
-                                <h6 class="fw-bold text-uppercase mb-0" style="color: #001C3E; letter-spacing: 2px; font-size: 0.8rem;">
-                                    Atualização Contínua
-                                </h6>
-                            </div>
-                            <h2 class="fw-bold text-dark display-6">
-                                Kairós <span style="font-weight: 300;">Intelligence</span>
-                            </h2>
-                        </div>
-                        <div class="col-lg-4 text-lg-end d-none"> 
-                            <a href="#" class="btn btn-outline-dark rounded-0 px-4 py-2" style="font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;">
-                            Ver Acervo Completo
-                            </a>
-                        </div>
+                <div class="row mb-5 justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <span class="text-uppercase fw-bold text-muted small" style="letter-spacing: 3px;">
+                            Kairós Intelligence
+                        </span>
+                        <h2 class="display-6 fw-bold mt-2" style="color: #001C3E;">
+                            Perspectiva Estratégica
+                        </h2>
                     </div>
+                </div>
 
-                    <div class="row g-4">
-                        <?php foreach ($lista_insights as $post): ?>
-                        <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-lg overflow-hidden" style="border-radius: 20px;">
+                    <div class="row g-0">
+                        
+                        <div class="col-lg-6 position-relative" style="min-height: 400px;">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                                 class="position-absolute w-100 h-100" 
+                                 alt="Imagem de Destaque" 
+                                 style="object-fit: cover; filter: brightness(0.9);">
                             
-                            <div class="card h-100 border-0 shadow hover-lift-effect">
-                                <div class="card-body p-4 d-flex flex-column">
-                                    
-                                    <div class="mb-3">
-                                        <span class="text-tech-label">
-                                            // <?php echo $post['categoria']; ?>
-                                        </span>
-                                    </div>
-
-                                    <h5 class="card-title fw-bold mb-3">
-                                        <a href="?artigo=<?php echo $post['slug']; ?>" class="text-decoration-none text-dark stretched-link">
-                                            <?php echo $post['titulo_popular']; ?>
-                                        </a>
-                                    </h5>
-
-                                    <p class="card-text text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">
-                                        <?php echo $post['titulo_tecnico']; ?>
-                                    </p>
-
-                                    <div class="mt-auto pt-3 border-top border-light d-flex justify-content-between align-items-center text-muted small">
-                                        <span><?php echo date('d.m.Y', strtotime($post['data_publicacao'])); ?></span>
-                                        <i class="bi bi-arrow-right"></i>
-                                    </div>
-
+                            <div class="position-absolute top-0 start-0 m-4">
+                                <div class="bg-white px-3 py-2 rounded shadow-sm d-inline-block text-center">
+                                    <span class="d-block fw-bold display-6 text-dark" style="line-height: 1;">
+                                        <?php echo date('d', strtotime($destaque['data_publicacao'])); ?>
+                                    </span>
+                                    <span class="small text-uppercase fw-bold text-muted">
+                                        <?php echo date('M', strtotime($destaque['data_publicacao'])); ?>
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <?php endforeach; ?>
+
+                        <div class="col-lg-6 d-flex align-items-center bg-white">
+                            <div class="p-5">
+                                
+                                <div class="d-flex align-items-center mb-4">
+                                    <span style="width: 40px; height: 2px; background-color: #B79538;"></span>
+                                    <span class="ms-3 text-uppercase fw-bold small text-warning" style="letter-spacing: 2px;">
+                                        <?php echo $destaque['categoria']; ?>
+                                    </span>
+                                </div>
+
+                                <h3 class="display-6 fw-bold mb-4">
+                                    <a href="?artigo=<?php echo $destaque['slug']; ?>" class="text-decoration-none text-dark hover-gold"
+                                    aria-label="Ler artigo completo: <?php echo $destaque['titulo_popular']; ?>">
+                                        <?php echo $destaque['titulo_popular']; ?>
+                                    </a>
+                                </h3>
+
+                                <p class="lead text-secondary mb-5" style="font-weight: 300; line-height: 1.6;">
+                                    <?php echo $destaque['titulo_tecnico']; ?>...
+                                </p>
+
+                                <div class="d-grid gap-2 d-md-block">
+                                    <a href="?artigo=<?php echo $destaque['slug']; ?>" class="btn btn-dark btn-lg rounded-pill px-5 shadow-sm"
+                                       style="background-color: #001C3E; border: none;">
+                                        Ler Artigo Completo
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
-
                 </div>
-            </section>
-        <?php endif; ?>
 
+            </div>
+        </section>
+    <?php endif; ?>
         <section class="py-5" id="desafios" style="background-color: #f8f9fa;">
             <div class="container py-4">
                     

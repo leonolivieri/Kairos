@@ -52,10 +52,10 @@
             <div class="container">
                 
                 <a class="navbar-brand fw-bold d-flex align-items-center" href="#home">
-                    <img src="logotipo/logo.png" alt="Logo Kairós" height="40" class="me-2">
+                    <img src="logotipo/logo.png" alt="Logo Kairós Ventures - Consultoria Bitrix24" height="40" class="me-2">
                 </a>
                 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar nvegação">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 

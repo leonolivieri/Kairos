@@ -93,7 +93,7 @@ body {
     color: #B79538; /* Texto Dourado */
     border: 1px solid #B79538; /* Borda Dourada */
     background: transparent;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.5px;
     padding: 8px 20px;
     border-radius: 50px; /* Arredondado moderno */
@@ -101,6 +101,8 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px; /* Espaço entre ícone e texto */
+    /* AJUSTE TÉCNICO: Sombra para aumentar contraste sobre branco */
+    text-shadow: 0.5px 0.5px 0px rgba(0, 0, 0, 0.1);    
 }
 
 /* Efeito ao passar o mouse */
@@ -141,7 +143,7 @@ body {
 
 /* --- UTILITÁRIOS DE COR --- */
 .bg-kairos-blue { background-color: var(--kairos-blue) !important; }
-.text-kairos-gold { color: var(--kairos-gold) !important; }
+.text-kairos-gold { color: var(--kairos-gold) !important; font-weight: 600; /* Texto dourado sobre branco sempre deve ser mais pesado para melhor legibilidade */ }
 .border-kairos-gold { border-color: var(--kairos-gold) !important; }
 
 /* --- SISTEMA DE BADGES KAIRÓS v2.0 (Material Design) --- */
