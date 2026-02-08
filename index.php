@@ -8,7 +8,7 @@
         <div class="container" style="max-width: 800px;">
             <header class="mb-5 text-center">
                 <span class="badge bg-primary mb-2"><?php echo $conteudo_view['categoria']; ?></span>
-                <h1 class="fw-bold display-5 mb-3"><?php echo $conteudo_view['titulo_popular']; ?></h1>
+                <h1 class="fw-bold display-5 mb-3"><?php echo $titulo_pagina; ?></h1>
                 <h2 class="h5 text-muted fw-normal mb-4"><?php echo $conteudo_view['titulo_tecnico']; ?></h2>
                 <div class="d-flex justify-content-center align-items-center text-muted small">
                     <i class="bi bi-calendar-event me-2"></i>

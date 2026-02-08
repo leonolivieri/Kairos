@@ -63,9 +63,15 @@ if (isset($_GET['artigo']) && !empty($_GET['artigo'])) {
 
         if ($artigo) {
             $tipo_conteudo = 'artigo';
-            $titulo_pagina = $artigo['titulo_popular'];
             $conteudo_view = $artigo;
-        } 
+
+            // LÓGICA KAIRÓS: Injeta a cidade no título apenas se não for o padrão
+            if ($slug_url !== 'padrao') {
+                $titulo_pagina = $artigo['titulo_popular'] . " em " . $cidade_exibicao;
+            } else {
+                $titulo_pagina = $artigo['titulo_popular'];
+            }
+        }
     } catch (PDOException $e) {}
 }
 
