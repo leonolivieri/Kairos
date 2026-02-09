@@ -12,7 +12,7 @@
                 <h2 class="h5 text-muted fw-normal mb-4"><?php echo $conteudo_view['titulo_tecnico']; ?></h2>
                 <div class="d-flex justify-content-center align-items-center text-muted small">
                     <i class="bi bi-calendar-event me-2"></i>
-                    <span>Publicado em: <?php echo date('d/m/Y', strtotime($conteudo_view['data_publicacao'])); ?></span>
+                    <span>Publicado em: <?php echo date('m/d/Y', strtotime($conteudo_view['data_publicacao'])); ?></span>
                 </div>
             </header>
 
