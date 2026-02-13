@@ -7,3 +7,9 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # Remover WWW (Canonicalização para kairosventures.com.br)
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# SEGURANÇA KAIRÓS: Bloquear acesso ao cofre
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>

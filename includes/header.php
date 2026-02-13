@@ -8,7 +8,7 @@
 
         <meta name="keywords" content="
             São José do Rio Pardo, São João da Boa Vista, Mogi Guaçu, Poços de Caldas,
-            Consultoria CRM de vendas, Gestão de Relcionamento com o Cliente, Transformação Digital, Parceiro Bitrix24,
+            Consultoria CRM de vendas, CRM de vendas ,Gestão de Relcionamento com o Cliente, Transformação Digital, Parceiro Bitrix24,
             Automação de WhatsApp, Chatbot para Vendas, Telefonia VoIP, PABX Virtual,
             Gestão de Tarefas, Organização Empresarial, Controle de Processos,
             CRM de vendas para Indústria, CRM de vendas para Advogados, Gestão para Confecções,

@@ -2,23 +2,36 @@
 // ARQUIVO: conexao.php
 // Protocolo Kairós: Conexão Híbrida (Local + Produção)
 
-// Detecta se estamos rodando no Localhost ou na Hostinger
+// 1. Carrega as variáveis do arquivo .env (se ele existir)
+$env_path = __DIR__ . '/.env';
+$env = [];
+
+if (file_exists($env_path)) {
+    // Lê o arquivo .env e guarda as chaves num array
+    $env = parse_ini_file($env_path);
+} else {
+    // Se não achar o arquivo (segurança), para tudo.
+    die("Erro Crítico Kairós: Arquivo de configuração (.env) não encontrado.");
+}
+
+// 2. Detecta se estamos rodando no Localhost ou na Hostinger
 $ambiente_local = ($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'localhost:8080');
 
 if ($ambiente_local) {
     // --- AMBIENTE DE DESENVOLVIMENTO (Seu PC) ---
-    $host = 'localhost';
-    $user = 'root';
-    $pass = 'Kairos@Admin'; // Sua senha local (vazia ou a que definiu)
-    $db   = 'kairos';
+    $host = $env['DB_HOST_LOCAL'];
+    $user = $env['DB_USER_LOCAL'];
+    $pass = $env['DB_PASS_LOCAL']; // Sua senha local (vazia ou a que definiu)
+    $db   = $env['DB_NAME_LOCAL'];
 } else {
     // --- AMBIENTE DE PRODUÇÃO (Hostinger) ---
-    $host = 'localhost';
-    $user = 'u818458777_admin'; // <--- COLOQUE O USUÁRIO DA HOSTINGER
-    $pass = '100nha@Admin';           // <--- COLOQUE A SENHA DA HOSTINGER
-    $db   = 'u818458777_BDKairos';         // <--- JÁ PEGUEI DO SEU PRINT
+    $host = $env['DB_HOST_PROD'];
+    $user = $env['DB_USER_PROD']; // <--- COLOQUE O USUÁRIO DA HOSTINGER
+    $pass = $env['DB_PASS_PROD']; // <--- COLOQUE A SENHA DA HOSTINGER
+    $db   = $env['DB_NAME_PROD']; // <--- JÁ PEGUEI DO SEU PRINT
 }
 
+// 3. Conexão PDO (Mantida igual)
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

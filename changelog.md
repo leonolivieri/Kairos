@@ -3,6 +3,11 @@
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [v2.4] - 13-02-2026
+### Segurança (Security Hardening)
+- **Cofre de Senhas (.env):** Implementação de variáveis de ambiente para ocultar credenciais de banco de dados.
+- **Proteção de Acesso:** Bloqueio de leitura do arquivo .env via `.htaccess`.
+- **Refatoração:** Atualização do `conexao.php` para leitura dinâmica de ambiente (Local vs Produção).
 ## [Não Publicado] - Em Desenvolvimento (Localhost)
 
 ## [v2.3] - 06-02-2026
