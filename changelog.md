@@ -3,6 +3,12 @@
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [v2.5] - 19-02-2026
+### Arquitetura Glocal e Desacoplamento (Geo-Core)
+- **Banco de Dados:** Criação do cofre `kairos_configuracoes` e hierarquia de `paises`.
+- **Integridade Referencial:** Conexão lógica entre estados e os países do eixo lusófono.
+- **Motor Kairós:** Refatoração do `engine.php` para ler o escopo global de atuação diretamente do banco, eliminando textos fixos (*hardcoded*).
+
 ## [v2.4] - 13-02-2026
 ### Segurança (Security Hardening)
 - **Cofre de Senhas (.env):** Implementação de variáveis de ambiente para ocultar credenciais de banco de dados.

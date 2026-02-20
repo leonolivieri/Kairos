@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?php echo $titulo_pagina; ?> | Kairós Ventures</title>
-        <meta name="description" content="Kairós Ventures: Parceiro Oficial Bitrix24 em São José do Rio Pardo. Transformação Digital, Implementação de CRM de vendas, Intranet e Automação de Processos com Inteligência Artificial.">
+        <meta name="description" content="Kairós Ventures: Parceiro Oficial Bitrix24. Transformação Digital, Implementação de CRM de vendas, Intranet e Automação de Processos com Inteligência Artificial.">
 
         <meta name="keywords" content="
             São José do Rio Pardo, São João da Boa Vista, Mogi Guaçu, Poços de Caldas,

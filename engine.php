@@ -4,15 +4,17 @@
  * -----------------------------------------------------------------------------
  * @arquivo    : engine.php
  * @descricao  : Motor de decisão de conteúdo e regras de negócio.
- * @versao     : 2.3
+ * @versao     : 2.5
  * @autor      : Leon (Arquiteto) & IA
- * @data_mod   : 06/02/2026
+ * @data_mod   : 19/02/2026
  * -----------------------------------------------------------------------------
  * HISTÓRICO DE MUDANÇAS:
  * [v2.0] - Lógica de Cidades (Legado).
  * [v2.1] - Correção de Variáveis Globais.
  * [v2.2] - Implementação do Hub de Conhecimento (Single Article).
  * [v2.3] - Implementação do Feed de Insights (Lista Home).
+ * [v2.4] - Cofre de Senhas (.env) e Segurança de Credenciais (Local/Hostinger).
+ * [v2.5] - Desacoplamento de configurações e Matriz Geo-Core Lusófona.
  * -----------------------------------------------------------------------------
  */
 
@@ -21,9 +23,21 @@ require_once 'conexao.php';
 // =================================================================================
 // 1. LEGADO: CARREGAMENTO DE CIDADES
 // =================================================================================
-$cidades_estrategicas = ['padrao' => 'São José do Rio Pardo'];
+try {
+        // A. Busca o texto global no Cofre de Configurações
+        $stmt_conf = $pdo->query("SELECT valor FROM kairos_configuracoes WHERE chave = 'texto_padrao_home' LIMIT 1");
+        if ($row_conf = $stmt_conf->fetch(PDO::FETCH_ASSOC)) 
+            {
+            $texto_padrao = $row_conf['valor'];
+            }
+    } catch (PDOException $e) {
+    // Falha silenciosa
+}
+
+$cidades_estrategicas = ['padrao' => $texto_padrao];
 
 try {
+    // C. Adiciona as cidades regionais na matriz de cidades estratégicas
     $sql = "SELECT slug, nome FROM cidades";
     $stmt = $pdo->query($sql);
     while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {

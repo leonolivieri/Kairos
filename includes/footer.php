@@ -14,46 +14,70 @@
                             <i class="bi bi-whatsapp me-2"></i> Iniciar Conversa
                         </a>
 
-                        <div class="row mt-4 border-top border-secondary pt-4 opacity-75 w-100 mx-auto">
-                            <div class="col-12">
+<div class="row mt-4 border-top border-secondary pt-4 opacity-75 w-100 mx-auto">
+                            <div class="col-12 text-center mb-4">
                                 <p class="small mb-2 text-white">
                                     <i class="bi bi-geo-alt-fill text-warning me-1"></i> 
-                                    <strong>Sede Operacional:</strong> 
-                                    <?php echo $cidade_exibicao; ?>, <?php echo $estado_sede; ?>
+                                    <strong>Operação Atual:</strong> 
+                                    <?php echo $cidade_exibicao; ?>
                                 </p>
+                            </div>
 
-                                
-                                <div class="d-flex flex-column align-items-center">
-
-                                    <div class="mt-4">
-                                        <h6 class="text-white-50 text-uppercase fw-bold mb-3" style="font-size: 0.75rem; letter-spacing: 1px;">
-                                            <i class="bi bi-geo-alt-fill me-1 text-kairos-gold"></i> Atuação Regional & SEO
-                                        </h6>
-                                        
-                                        <div class="d-flex flex-wrap gap-2">
-                                            <?php 
-                                            // Verifica se a variável existe antes de rodar (Segurança)
-                                            if(isset($cidades_estrategicas)): 
-                                                foreach($cidades_estrategicas as $slug => $nome): 
-                                                    // Pula o item 'padrao' para não gerar link repetido
-                                                    if($slug == 'padrao') continue; 
+                            <div class="col-md-6 mb-4 text-center text-md-start">
+                                <h6 class="text-white-50 text-uppercase fw-bold mb-3" style="font-size: 0.75rem; letter-spacing: 1px;">
+                                    <i class="bi bi-globe-americas me-1 text-warning"></i> Operação Global
+                                </h6>
+                                <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+                                    <?php
+                                    try {
+                                        $stmt_paises = $pdo->query("SELECT nome FROM paises ORDER BY id ASC");
+                                        while ($pais = $stmt_paises->fetch(PDO::FETCH_ASSOC)) {
+                                            $slug_pais = str_replace(['ç','ã',' '], ['c','a','-'], mb_strtolower($pais['nome'], 'UTF-8'));
                                             ?>
-                                                <a href="?cidade=<?php echo $slug; ?>" 
-                                                class="badge text-decoration-none"
-                                                style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-weight: 400; transition: all 0.3s;">
-                                                <?php echo $nome; ?>
-                                                </a>
-                                            <?php 
-                                                endforeach; 
-                                            endif; 
-                                            ?>
-                                        </div>
-                                        
-                                        <p class="small text-white-50 mt-3 fst-italic">
-                                            * Atendimento presencial e remoto conforme disponibilidade técnica da unidade Kairós Ventures regional.
-                                        </p>
-                                    </div>
+                                            <a href="?cidade=<?php echo $slug_pais; ?>" 
+                                               class="badge text-decoration-none px-3 py-2"
+                                               style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-weight: 400; transition: all 0.3s;"
+                                               onmouseover="this.style.borderColor='#B79538'; this.style.color='#B79538'" 
+                                               onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='#ccc'">
+                                                <?php echo htmlspecialchars($pais['nome']); ?>
+                                            </a>
+                                            <?php
+                                        }
+                                    } catch (PDOException $e) {}
+                                    ?>
                                 </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4 text-center text-md-start">
+                                <h6 class="text-white-50 text-uppercase fw-bold mb-3" style="font-size: 0.75rem; letter-spacing: 1px;">
+                                    <i class="bi bi-geo-alt-fill me-1 text-warning"></i> Atuação Regional & SEO
+                                </h6>
+                                <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+                                    <?php 
+                                    // Verifica se a variável existe antes de rodar (Segurança)
+                                    if(isset($cidades_estrategicas)): 
+                                        foreach($cidades_estrategicas as $slug => $nome): 
+                                            // Pula o item 'padrao' para não gerar link repetido
+                                            if($slug == 'padrao') continue; 
+                                    ?>
+                                        <a href="?cidade=<?php echo $slug; ?>" 
+                                           class="badge text-decoration-none px-3 py-2"
+                                           style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-weight: 400; transition: all 0.3s;"
+                                           onmouseover="this.style.borderColor='#B79538'; this.style.color='#B79538'" 
+                                           onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='#ccc'">
+                                            <?php echo $nome; ?>
+                                        </a>
+                                    <?php 
+                                        endforeach; 
+                                    endif; 
+                                    ?>
+                                </div>
+                            </div>
+
+                            <div class="col-12 text-center mt-2">
+                                <p class="small text-white-50 fst-italic mb-0">
+                                    * Atendimento presencial e remoto conforme disponibilidade técnica da unidade Kairós Ventures regional.
+                                </p>
                             </div>
                         </div>
 
