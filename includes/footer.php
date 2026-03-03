@@ -23,30 +23,32 @@
                                 </p>
                             </div>
 
-                            <div class="col-md-6 mb-4 text-center text-md-start">
-                                <h6 class="text-white-50 text-uppercase fw-bold mb-3" style="font-size: 0.75rem; letter-spacing: 1px;">
-                                    <i class="bi bi-globe-americas me-1 text-warning"></i> Operação Global
-                                </h6>
-                                <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
-                                    <?php
-                                    try {
-                                        $stmt_paises = $pdo->query("SELECT nome FROM paises ORDER BY id ASC");
-                                        while ($pais = $stmt_paises->fetch(PDO::FETCH_ASSOC)) {
-                                            $slug_pais = str_replace(['ç','ã',' '], ['c','a','-'], mb_strtolower($pais['nome'], 'UTF-8'));
-                                            ?>
-                                            <a href="?cidade=<?php echo $slug_pais; ?>" 
-                                               class="badge text-decoration-none px-3 py-2"
-                                               style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-weight: 400; transition: all 0.3s;"
-                                               onmouseover="this.style.borderColor='#B79538'; this.style.color='#B79538'" 
-                                               onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='#ccc'">
-                                                <?php echo htmlspecialchars($pais['nome']); ?>
-                                            </a>
-                                            <?php
-                                        }
-                                    } catch (PDOException $e) {}
-                                    ?>
-                                </div>
-                            </div>
+ <div class="col-md-6 mb-4 text-center text-md-start">
+    <h6 class="text-white-50 text-uppercase fw-bold mb-3" style="font-size: 0.75rem; letter-spacing: 1px;">
+        <i class="bi bi-globe-americas me-1 text-warning"></i> Operação Global
+    </h6>
+    <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+        <?php
+        try {
+            // Buscamos NOME e SIGLA para gerar links profissionais
+            $stmt_paises = $pdo->query("SELECT nome, sigla FROM paises ORDER BY nome ASC");
+            while ($pais = $stmt_paises->fetch(PDO::FETCH_ASSOC)) {
+                // O link agora passa o parâmetro 'pais' com a sigla oficial
+                $link_pais = "?pais=" . strtolower($pais['sigla']);
+                ?>
+                <a href="<?php echo $link_pais; ?>" 
+                   class="badge text-decoration-none px-3 py-2"
+                   style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #ccc; font-weight: 400; transition: all 0.3s;"
+                   onmouseover="this.style.borderColor='#B79538'; this.style.color='#B79538'" 
+                   onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='#ccc'">
+                    <?php echo htmlspecialchars($pais['nome']); ?>
+                </a>
+                <?php
+            }
+        } catch (PDOException $e) { /* Silêncio estratégico */ }
+        ?>
+    </div>
+</div>
 
                             <div class="col-md-6 mb-4 text-center text-md-start">
                                 <h6 class="text-white-50 text-uppercase fw-bold mb-3" style="font-size: 0.75rem; letter-spacing: 1px;">

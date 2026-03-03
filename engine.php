@@ -19,33 +19,59 @@
  */
 
 require_once 'conexao.php';
+/// =================================================================================
+// 1. NÚCLEO GEO-ESTRATÉGICO: INTELIGÊNCIA DE AUTOPREENCHIMENTO
+// =================================================================================
 
-// =================================================================================
-// 1. LEGADO: CARREGAMENTO DE CIDADES
-// =================================================================================
+// A. Fallbacks de Emergência (Nível de Segurança Máximo)
+$sigla_pais_padrao = 'BR'; 
+$pais_exibicao = "Brasil";
+
 try {
-        // A. Busca o texto global no Cofre de Configurações
-        $stmt_conf = $pdo->query("SELECT valor FROM kairos_configuracoes WHERE chave = 'texto_padrao_home' LIMIT 1");
-        if ($row_conf = $stmt_conf->fetch(PDO::FETCH_ASSOC)) 
-            {
-            $texto_padrao = $row_conf['valor'];
-            }
-    } catch (PDOException $e) {
-    // Falha silenciosa
-}
+    // B. BUSCA CONFIGURAÇÃO: Qual o país sede?
+    $stmt_sede = $pdo->prepare("SELECT valor FROM kairos_configuracoes WHERE chave = 'pais_sede_sigla' LIMIT 1");
+    $stmt_sede->execute();
+    $row_sede = $stmt_sede->fetch(PDO::FETCH_ASSOC);
 
+    if ($row_sede) {
+        $sigla_pais_padrao = strtoupper($row_sede['valor']);
+    } else {
+        // C. INTELIGÊNCIA DE AUTOPREENCHIMENTO: Se não existe, a Kairós cria!
+        $sql_insert = "INSERT INTO kairos_configuracoes (chave, valor, descricao, categoria) 
+                       VALUES ('pais_sede_sigla', 'BR', 'País Sede Padrão do Sistema (Provisionado Automaticamente)', 'Sistema')";
+        $pdo->exec($sql_insert);
+    }
+
+    // D. NAVEGAÇÃO DINÂMICA: URL (?pais=) sobrepõe o Banco
+    $sigla_atual = isset($_GET['pais']) ? strtoupper(substr($_GET['pais'], 0, 2)) : $sigla_pais_padrao;
+
+    // E. BUSCA O NOME DO PAÍS ATUAL NO BANCO
+    $stmt_nome = $pdo->prepare("SELECT nome FROM paises WHERE sigla = :sigla LIMIT 1");
+    $stmt_nome->execute(['sigla' => $sigla_atual]);
+    if ($row_nome = $stmt_nome->fetch(PDO::FETCH_ASSOC)) {
+        $pais_exibicao = $row_nome['nome'];
+    }
+
+    // F. DEFINIÇÃO DO TEXTO PADRÃO
+    $texto_padrao = "Todo o " . $pais_exibicao;
+    
+    // Sobrescrita final (se houver a chave antiga 'texto_padrao_home', ela ainda manda)
+    $stmt_conf = $pdo->query("SELECT valor FROM kairos_configuracoes WHERE chave = 'texto_padrao_home' LIMIT 1");
+    if ($row_conf = $stmt_conf->fetch(PDO::FETCH_ASSOC)) {
+        $texto_padrao = $row_conf['valor'];
+    }
+} catch (PDOException $e) { /* Falha silenciosa para estabilidade */ }
+
+// G. MATRIZ DE CIDADES: Alimenta a estrutura herdando o contexto do país
 $cidades_estrategicas = ['padrao' => $texto_padrao];
 
 try {
-    // C. Adiciona as cidades regionais na matriz de cidades estratégicas
     $sql = "SELECT slug, nome FROM cidades";
     $stmt = $pdo->query($sql);
     while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $cidades_estrategicas[$linha['slug']] = $linha['nome'];
     }
-} catch (PDOException $e) {
-    // Falha silenciosa
-}
+} catch (PDOException $e) { /* Mantém cidades vazias se houver erro */ }
 
 // Definição da cidade de exibição
 $slug_url = isset($_GET['cidade']) ? $_GET['cidade'] : 'padrao';
@@ -109,4 +135,5 @@ try {
 } catch (PDOException $e) {
     // Se der erro, a lista fica vazia e a seção não aparece (segurança)
 }
+
 ?>

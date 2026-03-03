@@ -1,14 +1,18 @@
 RewriteEngine On
 
-# Forçar HTTPS
+# INTELIGÊNCIA KAIRÓS: Ativar HTTPS apenas em Produção (Hostinger)
+# Se o Host NÃO for localhost e NÃO for o IP local do XAMPP
+RewriteCond %{HTTP_HOST} !^localhost [NC]
+RewriteCond %{HTTP_HOST} !^127\.0\.0\.1
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Remover WWW (Canonicalização para kairosventures.com.br)
+# CANONICALIZAÇÃO INTELIGENTE: Remover WWW apenas em Produção
+RewriteCond %{HTTP_HOST} !^localhost [NC]
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
-# SEGURANÇA KAIRÓS: Bloquear acesso ao cofre
+# SEGURANÇA KAIRÓS: Bloquear acesso ao cofre (Sempre Ativo)
 <Files .env>
     Order allow,deny
     Deny from all
